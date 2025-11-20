@@ -23,9 +23,7 @@ export const setupServer = () => {
         },
       }),
     );
-  app.get('/', () => {
-    console.log('hello');
-  });
+
   app.use(contactsRouter);
 
   app.use(notFoundHandler);
@@ -36,5 +34,4 @@ export const setupServer = () => {
   });
 };
 
-// const http = require('http');
-// const server = http.createServer((req, res) => {});
+
