@@ -6,3 +6,4 @@
 .DS_Store
 .idea
 
+/src/db/contacts.json

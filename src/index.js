@@ -1,19 +1,12 @@
 import { setupServer } from './server.js';
 import { initMongoConnection } from './db/initMongoConnection.js';
-import dotenv from 'dotenv';
-
-dotenv.config();
-const {
-  MONGODB_USER,
-  MONGODB_PASSWORD,
-  MONGODB_URL,
-  MONGODB_DB,
-} = process.env;
 
 
-initMongoConnection(MONGODB_USER, MONGODB_PASSWORD, MONGODB_URL, MONGODB_DB)
-  .then((PORT) => {
-    setupServer(PORT);
+
+initMongoConnection()
+  .then(() => {
+    console.log('Mongo connection successfully established!');
+    setupServer();
   })
   .catch((error) => {
     console.log(error.message);
