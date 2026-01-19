@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegexp = /^\d{3}-\d{3}-\d{4}$/;
+// const phoneRegexp = /^\d{3}-\d{3}-\d{4}$/;
 
 const contactSchema = new Schema({
   name: {
@@ -10,7 +10,7 @@ const contactSchema = new Schema({
   },
   phoneNumber: {
       type: String,
-      match: phoneRegexp,
+      // match: phoneRegexp,
       required: true,
 
   },

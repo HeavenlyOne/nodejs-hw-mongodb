@@ -1,10 +1,12 @@
 import createHttpError from 'http-errors';
 import {
   createContact,
+  deleteContact,
   getAll,
   getById,
   updateContact,
 } from '../services/contacts.js';
+import { randomDataCreator } from '../utils/randomDataCreator.js';
 
 export const getAllContacts = async (req, res) => {
   const contacts = await getAll();
@@ -41,6 +43,27 @@ export const createNewContact = async (req, res) => {
   res.status(201).json({
     status: 201,
     message: 'Successfully creates a contact',
+    data: result,
+  });
+};
+
+export const deleteOnecontact = async (req, res) => {
+  const { id } = req.params;
+  const result = await deleteContact(id);
+  if (!result) {
+    throw createHttpError(404, 'Contact not found');
+  }
+  res.json({
+    message: 'Contact deleted',
+  });
+};
+
+export const createNewContactWithoutRequest = async (req, res) => {
+  const contactObj = randomDataCreator();
+  const result = await createContact(contactObj);
+  res.status(201).json({
+    status: 201,
+    message: 'Successully creates contact',
     data: result,
   });
 };

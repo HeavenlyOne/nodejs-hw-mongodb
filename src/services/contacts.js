@@ -15,6 +15,10 @@ export const createContact = async (payload) => {
   return newContact;
 };
 
+export const deleteContact = async (contactId) => {
+  const deletedContact = await Contact.findByIdAndDelete(contactId);
+  return deletedContact;
+};
 export const updateContact = async (id, data) => {
   const updatedStudent = await Contact.findByIdAndUpdate(id, data, {
     new: true,
